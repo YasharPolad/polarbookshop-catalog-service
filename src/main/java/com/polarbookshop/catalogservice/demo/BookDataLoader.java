@@ -16,8 +16,8 @@ public class BookDataLoader {
 
   private final BookRepository bookRepository;
   private final List<Book> books = Arrays.asList(
-      new Book("0123456789", "War and Peace", "Leo Tolstoy", 20.0),
-      new Book ("0123456789123", "Crime and Punishment", "Fyodor Dostoevsky", 18.0)
+      Book.of("0123456789", "War and Peace", "Leo Tolstoy", 20.0),
+      Book.of("0123456789123", "Crime and Punishment", "Fyodor Dostoevsky", 18.0)
   );
 
   public BookDataLoader(BookRepository bookRepository) {
@@ -26,6 +26,7 @@ public class BookDataLoader {
 
   @EventListener(ApplicationReadyEvent.class)
   public void loadBookTestData(){
-    books.forEach(bookRepository::save);
+    bookRepository.deleteAll();
+    bookRepository.saveAll(books);
   }
 }
