@@ -25,7 +25,7 @@ class CatalogServiceApplicationTests {
   @Test
   void whenPostRequestThenBookCreated(){
     var isbn = "1231231231";
-    var expectedBook = Book.of(isbn, "Title", "Author", 9.90);
+    var expectedBook = Book.of(isbn, "Title", "Author", 9.90, "Publisher");
 
     webTestClient
         .post()
@@ -39,7 +39,7 @@ class CatalogServiceApplicationTests {
               .isEqualTo(expectedBook.isbn());
         });
 
-    var updatedBook = Book.of(isbn, "Title-Updated", "Author-Updated", 10.00);
+    var updatedBook = Book.of(isbn, "Title-Updated", "Author-Updated", 10.00, "Publisher-Updated");
 
     webTestClient
         .put()
@@ -57,6 +57,8 @@ class CatalogServiceApplicationTests {
               .isEqualTo("Author-Updated");
           assertThat(actualBook.price())
               .isEqualTo(10.00);
+          assertThat(actualBook.publisher())
+              .isEqualTo("Publisher-Updated");
         });
   }
 }

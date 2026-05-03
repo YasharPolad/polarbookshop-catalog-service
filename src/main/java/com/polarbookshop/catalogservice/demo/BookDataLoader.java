@@ -16,8 +16,8 @@ public class BookDataLoader {
 
   private final BookRepository bookRepository;
   private final List<Book> books = Arrays.asList(
-      Book.of("0123456789", "War and Peace", "Leo Tolstoy", 20.0),
-      Book.of("0123456789123", "Crime and Punishment", "Fyodor Dostoevsky", 18.0)
+      Book.of("0123456789", "War and Peace", "Leo Tolstoy", 20.0, "Rosmann"),
+      Book.of("0123456789123", "Crime and Punishment", "Fyodor Dostoevsky", 18.0, "Rosmann")
   );
 
   public BookDataLoader(BookRepository bookRepository) {
