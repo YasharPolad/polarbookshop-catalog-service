@@ -23,6 +23,7 @@ jobs:
           path: "${{ github.workspace }}"
           fail-build: 'false'
           severity-cutoff: 'high'
+          grype-version: latest
       - name: Upload vulnerability report
         uses: github/codeql-action/upload-sarif@v3
         if: success() || failure()
